@@ -27,10 +27,10 @@ class image_loader {
   }
   
   void save_image_data() {
-    println("penis");
     BufferedImage bi = toBufferedImage(id.image_bytes);
-    File fileout = new File("D:/Projects/Coding Projects/Processing Projects/jpeg_editor/buddha.jpg");
     try {
+      //Using java.io, wants absolute path
+      File fileout = new File(sketchPath() + "/cat.jpg");
       ImageIO.write(bi, "jpg", fileout);  
     } catch(IOException e) {
       println("write didn't work buddy");
