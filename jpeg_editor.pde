@@ -8,7 +8,7 @@ import java.io.*;
 //                  IMPORTANT INFO READ ME!!!
 //    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
 //    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
-final String image_name = "fortnite";
+final String image_name = "cat";
 //    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
 //    CONSIDER USING SMALLER IMAGES, BUT THE WINDOW IS RESIZEABLE
 //    YOU WILL NOT BE ABLE TO OPEN THE IMAGES AFTER EDITING THEM
@@ -22,9 +22,12 @@ final String image_name = "fortnite";
     This program allows you to edit the quantization tables of any jpeg.
     Quantization tables are traditionally displayed in 8x8 tables of 
     hexadecmial numbers, which is displayed in a seperate window, along
-    with a save button. If all your edits are vaild, pressing the save
+    with a save button. If all your edits are vaild(vaild hexadecimal numbers), pressing the save
     button will save your changes to a copy of your image, and display
     it on the window containing your image.
+    
+    Try replace the first hexadecimal number with "FF" and then press
+    save.
 */
 
 
