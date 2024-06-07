@@ -10,8 +10,11 @@ class image_loader {
   
   image_loader(String path) {
     this.curr_image_path = path;
-    id = new image_data(path);
-    curr_image = loadImage(path);
+    
+    //set up image_data
+    id = new image_data(curr_image_path);
+    //setup image to be displayed to screen
+    curr_image = loadImage(path + dot_jpg);
   }
   
   void load_all_image_data() {
@@ -22,6 +25,11 @@ class image_loader {
     id.alter_image_data(data);
   }
   
+  void set_curr_image(String path) {
+    curr_image_path = path;
+    curr_image = loadImage(path + dot_jpg);
+  }
+  
   String get_image_data() {
     return id.get_quant_tables(0);
   }
@@ -30,8 +38,10 @@ class image_loader {
     BufferedImage bi = toBufferedImage(id.image_bytes);
     try {
       //Using java.io, wants absolute path
-      File fileout = new File(sketchPath() + "/cat.jpg");
-      ImageIO.write(bi, "jpg", fileout);  
+      String new_image_path = curr_image_path + "(1)";
+      File fileout = new File(sketchPath() + "/" + new_image_path + dot_jpg);
+      ImageIO.write(bi, "jpg", fileout);
+      set_curr_image(new_image_path);
     } catch(IOException e) {
       println("write didn't work buddy");
     }

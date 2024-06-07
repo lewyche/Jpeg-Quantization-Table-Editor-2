@@ -4,15 +4,15 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 image_loader i_h;
+
+final String dot_jpg = ".jpg";
 
 void setup() {
   size(730,800);
   surface.setResizable(true);
-  i_h = new image_loader("cat.jpg");
+  i_h = new image_loader("cat");
   i_h.load_all_image_data();
   
   createGUI();
