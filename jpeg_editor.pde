@@ -4,15 +4,41 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+// =================================================================
+//                  IMPORTANT INFO READ ME!!!
+//    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
+//    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
+final String image_name = "cat";
+//    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
+//    CONSIDER USING SMALLER IMAGES, BUT THE WINDOW IS RESIZEABLE
+//    YOU WILL NOT BE ABLE TO OPEN THE IMAGES AFTER EDITING THEM
+//    THIS PROGRAM WILL CREATE A NEW COPY OF YOUR IMAGE EVERY TIME YOU
+//    PRESS THE SAVE BUTTON
+// =================================================================
+
+
+/*
+                     User Tutorial
+    This program allows you to edit the quantization tables of any jpeg.
+    Quantization tables are traditionally displayed in 8x8 tables of 
+    hexadecmial numbers, which is displayed in a seperate window, along
+    with a save button. If all your edits are vaild(vaild hexadecimal numbers), pressing the save
+    button will save your changes to a copy of your image, and display
+    it on the window containing your image.
+    
+    Try replace the first hexadecimal number with "FF" and then press
+    save.
+*/
+
 
 image_loader i_h;
+
+final String dot_jpg = ".jpg";
 
 void setup() {
   size(730,800);
   surface.setResizable(true);
-  i_h = new image_loader("cat.jpg");
+  i_h = new image_loader(image_name);
   i_h.load_all_image_data();
   
   createGUI();

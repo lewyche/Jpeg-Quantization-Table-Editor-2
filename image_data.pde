@@ -1,3 +1,4 @@
+
 class image_data {
   //the entire image loaded into this byte array
   byte[] image_bytes;
@@ -11,22 +12,26 @@ class image_data {
   IntList quant_tables_index = new IntList();
   
   String path;
+  
+  //constant variables for code logic
+  final boolean first_time = true;
+  final boolean other_times = false;
+  
   image_data(String p) {
     path = p;
   }
 
   //fills image_bytes and image_hex
   void load_image_data() {
-    image_bytes = loadBytes(path);
+    image_bytes = loadBytes(path + dot_jpg);
     image_hex = new StringList();
-    set_image_hex(true);
+    set_image_hex(first_time);
     find_quant_tables();
   }
   
-  //TODO: change name to make parameters make more sense
-  //EG: set_image_hex(true); does not reflect the function of this function
-  void set_image_hex(boolean first_time) {
-    if(first_time == true) {
+  //convert image_bytes to hexadecimal and put the elements in image_hex
+  void set_image_hex(boolean is_first_time) {
+    if(is_first_time == true) {
       for (int i = 0; i < image_bytes.length; i++) {
         int a = image_bytes[i] & 0xff;
         image_hex.append(hex(a, 2));
@@ -42,12 +47,15 @@ class image_data {
   //fills quant_tables_index
   void find_quant_tables() {
     for (int i = 0; i < image_hex.size(); ++i) {
+      //FF and DB in tandem signifies the start of a quantization table 
+      //see: https://en.wikipedia.org/wiki/JPEG#Syntax_and_structure
       if (image_hex.get(i).equals("FF") && image_hex.get(i + 1).equals("DB")) {
         quant_tables_index.append(i);
       }
     }
   }
   
+  //get one of two quantization tables based on n
   String get_quant_tables(int n) {
     int index = quant_tables_index.get(n);
     String quant_tables = "";
@@ -59,11 +67,13 @@ class image_data {
   
   //runs everytime image data is edited on the user side
   void alter_image_data(String new_image_data) {
+    
     String[] l = split(new_image_data, ' ');
     byte[] possible_new_image_bytes = check_data_validity(l, quant_tables_index.get(0));
+    //if all data is vaild hexadecimal numbers
     if(possible_new_image_bytes.length > 0) {
       arrayCopy(possible_new_image_bytes, image_bytes);
-      set_image_hex(false);
+      set_image_hex(other_times);
     }
     
   }
