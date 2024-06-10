@@ -45,7 +45,7 @@ void setup() {
   
   imageData.setText(i_h.get_image_data());
   
-  println(i_h.id.luminance);
+  println(i_h.i_d.luminance);
 
 }
 
