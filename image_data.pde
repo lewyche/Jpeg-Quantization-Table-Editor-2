@@ -13,12 +13,18 @@ class image_data {
   
   String path;
   
+  //luminance or chrominance
+  String luminance;
+  String chrominance;
+  
   //constant variables for code logic
   final boolean first_time = true;
   final boolean other_times = false;
   
   image_data(String p) {
     path = p;
+    luminance = "";
+    chrominance = "";
   }
 
   //fills image_bytes and image_hex
@@ -51,6 +57,9 @@ class image_data {
       //see: https://en.wikipedia.org/wiki/JPEG#Syntax_and_structure
       if (image_hex.get(i).equals("FF") && image_hex.get(i + 1).equals("DB")) {
         quant_tables_index.append(i);
+        if(quant_tables_index.size() == 1) {
+          luminance = image_hex.get(i + 4);
+        }
       }
     }
   }
