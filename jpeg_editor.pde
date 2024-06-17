@@ -8,7 +8,8 @@ import java.io.*;
 //                  IMPORTANT INFO READ ME!!!
 //    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
 //    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
-final String image_name = "cat";
+//final String image_name = "cat";
+final String image_name = "lebron";
 //    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
 //    CONSIDER USING SMALLER IMAGES, BUT THE WINDOW IS RESIZEABLE
 //    YOU WILL NOT BE ABLE TO OPEN THE IMAGES AFTER EDITING THEM
@@ -44,8 +45,6 @@ void setup() {
   createGUI();
   
   imageData.setText(i_h.get_image_data());
-  
-  println(i_h.i_d.luminance);
 
 }
 
