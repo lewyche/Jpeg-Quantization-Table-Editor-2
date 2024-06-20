@@ -8,15 +8,18 @@ import java.io.*;
 //                  IMPORTANT INFO READ ME!!!
 //    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
 //    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
-final String image_name = "cat";
+final String image_name = "bigcat";
+//final String image_name = "lebron";
 //    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
+//    IMAGES MUST HAVE ".jpg" INSTEAD OF ".jpeg"
 //    CONSIDER USING SMALLER IMAGES, BUT THE WINDOW IS RESIZEABLE
 //    YOU WILL NOT BE ABLE TO OPEN THE IMAGES AFTER EDITING THEM
 //    THIS PROGRAM WILL CREATE A NEW COPY OF YOUR IMAGE EVERY TIME YOU
 //    PRESS THE SAVE BUTTON
 // =================================================================
 
-
+/*
+    Robert Yan 2024
 /*
                      User Tutorial
     This program allows you to edit the quantization tables of any jpeg.
@@ -26,11 +29,20 @@ final String image_name = "cat";
     button will save your changes to a copy of your image, and display
     it on the window containing your image.
     
-    Try replace the first hexadecimal number with "FF" and then press
-    save.
+    If arrow buttons appear under the text "Data:", that means the image has multiple quantization tables,
+    and you are able to flip through and edit them with the buttons.
+    
+    Moving the quality slider and pressing set quality will save and increase or decrease the quality of the image,
+    with 50 being the default, and nothing will change.
+    
+    Try changing the first number to FF and pressing save.
 */
 
+//Edit this if you want to enable or disable resizing
+boolean resize_img = true;
 
+
+//==================================================== No Edit Zone ====================================================
 image_loader i_h;
 
 final String dot_jpg = ".jpg";
@@ -45,7 +57,11 @@ void setup() {
   
   imageData.setText(i_h.get_image_data());
   
-
+  //setting visibity of arrows if image does not have more than one table
+  if(i_h.i_d.quant_tables_index.size() <= 1) {
+    next.setVisible(false);
+    prev.setVisible(false);
+  }
 }
 
 void draw() {
