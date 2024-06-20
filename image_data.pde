@@ -3,9 +3,7 @@ class image_data {
   byte[] image_bytes;
   //the entire image converted into hexadecimal
   StringList image_hex;
-
-  StringList curr_quant_table;
-
+  
   //stores the index at which the quantization tables appears
   IntList quant_tables_index = new IntList();
   
@@ -124,7 +122,6 @@ class image_data {
   }
   
   void get_next_table() {
-    println(quant_tables_index.size());
     //quant_tables_index.size() is the number of tables in the jpeg image
     if(curr_table + 1 < quant_tables_index.size()) {
       curr_table++;

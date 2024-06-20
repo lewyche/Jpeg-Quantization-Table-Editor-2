@@ -1,5 +1,3 @@
-String quant_mode = "0";
-
 class image_loader {
   
   PImage curr_image;
@@ -17,6 +15,7 @@ class image_loader {
     curr_image = loadImage(path + dot_jpg);
   }
   
+  //wrapper functions
   void load_all_image_data() {
     i_d.load_image_data();
   }
@@ -43,7 +42,7 @@ class image_loader {
       ImageIO.write(bi, "jpg", fileout);
       set_curr_image(new_image_path);
     } catch(IOException e) {
-      println("write didn't work buddy");
+      println("write didn't work");
     }
   }
   

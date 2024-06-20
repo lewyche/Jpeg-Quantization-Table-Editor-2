@@ -8,7 +8,7 @@ import java.io.*;
 //                  IMPORTANT INFO READ ME!!!
 //    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
 //    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
-final String image_name = "cat";
+final String image_name = "bigcat";
 //final String image_name = "lebron";
 //    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
 //    IMAGES MUST HAVE ".jpg" INSTEAD OF ".jpeg"
@@ -56,6 +56,8 @@ void setup() {
   createGUI();
   
   imageData.setText(i_h.get_image_data());
+  
+  //setting visibity of arrows if image does not have more than one table
   if(i_h.i_d.quant_tables_index.size() <= 1) {
     next.setVisible(false);
     prev.setVisible(false);
