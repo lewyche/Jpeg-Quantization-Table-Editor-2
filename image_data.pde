@@ -1,4 +1,3 @@
-
 class image_data {
   //the entire image loaded into this byte array
   byte[] image_bytes;
@@ -12,12 +11,15 @@ class image_data {
   
   String path;
   
+  int curr_table;
+  
   //constant variables for code logic
   final boolean first_time = true;
   final boolean other_times = false;
   
   image_data(String p) {
     path = p;
+    curr_table = 0;
   }
 
   //fills image_bytes and image_hex
@@ -77,7 +79,7 @@ class image_data {
   void alter_image_data(String new_image_data) {
     
     String[] l = split(new_image_data, ' ');
-    byte[] possible_new_image_bytes = check_data_validity(l, quant_tables_index.get(0));
+    byte[] possible_new_image_bytes = check_data_validity(l, quant_tables_index.get(curr_table));
     //if all data is vaild hexadecimal numbers
     if(possible_new_image_bytes.length > 0) {
       arrayCopy(possible_new_image_bytes, image_bytes);
@@ -105,8 +107,6 @@ class image_data {
   }
   
   //using intlist for convenience
-  
-  
   IntList to_byte_array(StringList hex_arr) {
     IntList new_list = new IntList();
     for(int i = 0; i < hex_arr.size(); ++i) {
@@ -121,6 +121,22 @@ class image_data {
       hex_arr.append(hex(byte_arr.get(i),2));
     }
     return hex_arr;
+  }
+  
+  void get_next_table() {
+    println(quant_tables_index.size());
+    //quant_tables_index.size() is the number of tables in the jpeg image
+    if(curr_table + 1 < quant_tables_index.size()) {
+      curr_table++;
+      imageData.setText(get_quant_tables(curr_table));
+    }
+  }
+  
+  void get_prev_table() {
+    if(curr_table - 1 >= 0) {
+      curr_table--;
+      imageData.setText(get_quant_tables(curr_table));
+    }
   }
   
   //Q is Q Factor

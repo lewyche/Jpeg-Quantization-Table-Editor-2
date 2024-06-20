@@ -31,7 +31,7 @@ class image_loader {
   }
   
   String get_image_data() {
-    return i_d.get_quant_tables(0);
+    return i_d.get_quant_tables(i_d.curr_table);
   }
   
   void save_image_data() {
@@ -49,6 +49,9 @@ class image_loader {
   
   void draw_image() {
     image(curr_image, 0, 0);
+    if(resize_img) {
+      curr_image.resize(width, height);
+    }
   }
   
 }

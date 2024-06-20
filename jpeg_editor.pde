@@ -8,9 +8,10 @@ import java.io.*;
 //                  IMPORTANT INFO READ ME!!!
 //    TO EDIT YOUR OWN JPEG IMAGES, ADD THE IMAGE TO THE DIRECTORY
 //    AND CHANGE THIS VARIABLE TO THE NAME OF YOUR IMAGE:
-//final String image_name = "cat";
-final String image_name = "lebron";
+final String image_name = "cat";
+//final String image_name = "lebron";
 //    DO NOT INCLUDE ".jpg" AND DO NOT USE IMAGES OF A ANOTHER FORMAT
+//    IMAGES MUST HAVE ".jpg" INSTEAD OF ".jpeg"
 //    CONSIDER USING SMALLER IMAGES, BUT THE WINDOW IS RESIZEABLE
 //    YOU WILL NOT BE ABLE TO OPEN THE IMAGES AFTER EDITING THEM
 //    THIS PROGRAM WILL CREATE A NEW COPY OF YOUR IMAGE EVERY TIME YOU
@@ -31,6 +32,8 @@ final String image_name = "lebron";
     save.
 */
 
+//Edit this if you want to enable or disable resizing
+boolean resize_img = true;
 
 image_loader i_h;
 
@@ -45,7 +48,10 @@ void setup() {
   createGUI();
   
   imageData.setText(i_h.get_image_data());
-
+  if(i_h.i_d.quant_tables_index.size() <= 1) {
+    next.setVisible(false);
+    prev.setVisible(false);
+  }
 }
 
 void draw() {

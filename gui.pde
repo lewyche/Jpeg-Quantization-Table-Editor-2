@@ -27,11 +27,22 @@ public void save_file_click1(GButton source, GEvent event) { //_CODE_:save_file:
   i_h.save_image_data();
 } //_CODE_:save_file:909706:
 
+public void go_to_prev(GButton source, GEvent event) {
+  i_h.i_d.get_prev_table();
+}
+
+public void go_to_next(GButton source, GEvent event) {
+  i_h.i_d.get_next_table();
+
+}
+
+
 public void slider_changed(GCustomSlider source, GEvent event) { //_CODE_:slider:219774:
 } //_CODE_:slider:219774:
 
 public void set_quality(GButton source, GEvent event) { //_CODE_:quality:340943:
   i_h.i_d.set_quality(slider.getValueI());
+  i_h.save_image_data();
 } //_CODE_:quality:340943:
 
 // Create all the GUI controls. 
@@ -67,7 +78,13 @@ public void createGUI(){
   quality = new GButton(imageEdit, 80, 35, 80, 22);
   quality.setText("Set Quality");
   quality.addEventHandler(this, "set_quality");
-
+  prev = new GButton(imageEdit, 10, 40, 30, 15);
+  prev.setText("<");
+  prev.addEventHandler(this, "go_to_prev");
+  next = new GButton(imageEdit, 40, 40, 30, 15);
+  next.setText(">");
+  next.addEventHandler(this, "go_to_next");
+  
   imageEdit.loop();
 }
 
@@ -80,3 +97,5 @@ GLabel label1;
 GLabel slide_label; 
 GButton save_file; 
 GButton quality;
+GButton next;
+GButton prev;
