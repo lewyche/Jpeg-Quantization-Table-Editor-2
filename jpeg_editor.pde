@@ -18,7 +18,8 @@ final String image_name = "cat";
 //    PRESS THE SAVE BUTTON
 // =================================================================
 
-
+/*
+    Robert Yan 2024
 /*
                      User Tutorial
     This program allows you to edit the quantization tables of any jpeg.
@@ -28,13 +29,20 @@ final String image_name = "cat";
     button will save your changes to a copy of your image, and display
     it on the window containing your image.
     
-    Try replace the first hexadecimal number with "FF" and then press
-    save.
+    If arrow buttons appear under the text "Data:", that means the image has multiple quantization tables,
+    and you are able to flip through and edit them with the buttons.
+    
+    Moving the quality slider and pressing set quality will save and increase or decrease the quality of the image,
+    with 50 being the default, and nothing will change.
+    
+    Try changing the first number to FF and pressing save.
 */
 
 //Edit this if you want to enable or disable resizing
 boolean resize_img = true;
 
+
+//==================================================== No Edit Zone ====================================================
 image_loader i_h;
 
 final String dot_jpg = ".jpg";
